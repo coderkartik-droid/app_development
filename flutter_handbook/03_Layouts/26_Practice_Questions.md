@@ -623,6 +623,74 @@ Container(
 
 ---
 
+### Question 11: Multiple Choice Question (MCQ)
+Which built-in Flutter clipper is best suited for creating a circular profile picture from a square image?
+* A) `ClipRRect`
+* B) `ClipOval`
+* C) `ClipPath`
+* D) `ClipRect`
+
+**Answer: B (ClipOval)**  
+*Explanation:* `ClipOval` automatically clips its child to an ellipse (circle when width equals height), making it perfect for profile pictures.
+
+---
+
+### Question 12: True or False
+**Statement:** `CustomPaint` can draw graphics behind a child widget, while `ClipPath` can only clip an existing widget's shape.
+
+**Answer: True**  
+*Explanation:* `CustomPaint` with a `painter` draws graphics behind the child, and with a `foregroundPainter` draws on top. `ClipPath` only cuts the child widget into a custom shape without adding new graphics.
+
+---
+
+### Question 13: Theory
+Explain the difference between `ClipPath` and `CustomPaint`.
+
+**Answer:**  
+`ClipPath` is used to **cut** an existing widget into a custom shape (e.g., curved header, diagonal banner). It takes a child widget and clips it based on a `CustomClipper<Path>`.  
+`CustomPaint` is used to **draw** new graphics from scratch on a canvas (e.g., waves, charts, graphs). It uses a `CustomPainter` to execute drawing commands like `drawCircle()`, `drawPath()`, and `drawLine()`.  
+`ClipPath` modifies existing content; `CustomPaint` creates new content.
+
+---
+
+### Question 14: Coding Exercise
+Write a `CustomClipper<Path>` that creates a simple diagonal cut on the right side of a widget (from top-right to a point 50px down on the right edge).
+
+**Answer:**
+```dart
+class DiagonalClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width - 50, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
+}
+```
+
+---
+
+### Question 15: Output Prediction
+What happens if you return `true` in the `shouldReclip()` method of a static (non-animated) `CustomClipper`?
+* A) The app crashes
+* B) The clip recalculates on every rebuild, wasting performance
+* C) Nothing changes
+* D) The clip is applied only once
+
+**Answer: B**  
+*Explanation:* Returning `true` causes Flutter to recalculate the clipping path on every frame rebuild, which is unnecessary for static shapes and wastes CPU cycles.
+
+---
+
 ## 📝 Summary
 
 * **Layout Principle:** Always remember *"Constraints go down, Sizes go up, Parent sets position."*
@@ -631,3 +699,4 @@ Container(
 * **Elastic Pushing:** Use `Spacer` to push widgets to opposite sides of a `Row` or `Column`.
 * **Scalability:** Always use `.builder` constructors (`ListView.builder`, `GridView.builder`) when displaying dynamic or large datasets to ensure smooth 120fps performance.
 * **Unified Scrolling:** Use `CustomScrollView` with Slivers to coordinate collapsing headers, grids, and lists into one seamless user experience.
+* **Custom Shapes:** Use `ClipPath` and `CustomClipper` to create curved headers, diagonal banners, and custom profile cards; use `CustomPaint` and `CustomPainter` to draw waves, charts, and custom graphics.

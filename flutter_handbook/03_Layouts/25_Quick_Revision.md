@@ -6,7 +6,7 @@ Congratulations on completing the Layouts module of the Flutter Handbook!
 
 Layout is the foundational bedrock of Flutter engineering. A developer who understands state management or API integration but cannot construct responsive layouts will always struggle to build professional applications. Conversely, an engineer who masters Flutter's layout tree can look at any UI mockup—from Dribbble, Apple, or Google—and visualize the exact widget tree in seconds.
 
-This chapter serves as your high-impact comprehensive revision of all 20 layout concepts covered so far: from horizontal and vertical arrangements (`Row`, `Column`, `Wrap`), to depth layering (`Stack`, `Positioned`), flexible spacing (`Expanded`, `Flexible`, `Spacer`), atomic sizing (`SizedBox`, `Padding`, `Align`, `Center`, `Container`), and infinite scrolling (`ListView`, `GridView`, `CustomScrollView`, `Slivers`).
+This chapter serves as your high-impact comprehensive revision of all 24 layout concepts covered so far: from horizontal and vertical arrangements (`Row`, `Column`, `Wrap`), to depth layering (`Stack`, `Positioned`), flexible spacing (`Expanded`, `Flexible`, `Spacer`), atomic sizing (`SizedBox`, `Padding`, `Align`, `Center`, `Container`), infinite scrolling (`ListView`, `GridView`, `CustomScrollView`, `Slivers`), and custom shape creation (`ClipPath`, `CustomClipper`, `CustomPaint`, `CustomPainter`).
 
 ---
 
@@ -90,6 +90,7 @@ Place items side-by-side    Stack items top-to-bottom    Layer items on top of e
 | **Virtual 1D Lists** | `ListView`, `ListView.builder` | `itemCount`, `itemBuilder`, `itemExtent` | Smooth scrolling for tens of thousands of items with flat memory usage |
 | **Virtual 2D Grids** | `GridView`, `GridView.builder` | `gridDelegate`, `crossAxisCount`, `childAspectRatio` | 2D product catalogs, photo albums, and dashboard menus |
 | **Unified Complex Scroll** | `CustomScrollView`, `Slivers` | `slivers`, `SliverAppBar`, `SliverToBoxAdapter` | Combining collapsing headers, sticky tabs, grids, and lists into one scrollable stream |
+| **Custom Shape Creation** | `ClipPath`, `CustomClipper`, `CustomPaint`, `CustomPainter` | `clipper`, `painter`, `getClip()`, `paint()` | Creating custom shapes, curved headers, waves, and drawing custom graphics |
 
 ---
 
@@ -627,3 +628,4 @@ Which widget bridges a normal `RenderBox` widget (like a `Container`) into the `
 * **Elastic Spacing:** Use `Expanded` to force-fill; use `Flexible` to shrink-wrap; use `Spacer` to push siblings apart.
 * **Virtualization:** Always use `.builder` constructors for large or dynamic collections to guarantee 120fps scrolling.
 * **Sliver Power:** Use `CustomScrollView` to harmonize collapsing headers, grids, and lists into one seamless stream.
+* **Custom Shapes:** Use `ClipPath` and `CustomClipper` to cut widgets into custom shapes; use `CustomPaint` and `CustomPainter` to draw custom graphics like waves and charts.
